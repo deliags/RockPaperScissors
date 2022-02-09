@@ -9,22 +9,45 @@ function computerPlay() {
   return computerChoice[randomComputerChoice];
 }
 
+let playerScore = 0;
+let computerScore = 0;
+  
 function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Hi! This is your round! Choose one: Rock, Paper or Scissors", "Your Choice").toLowerCase();
-  computerSelection = computerPlay().toLowerCase(); //Need to lowecase
-  let results;
+  
+  computerSelection = computerPlay().toLowerCase();
 
   if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
-    
-    results = "You Win!!";
+    playerScore++;
   }
   
   else if (playerSelection == computerSelection) {
-    results = "A tie!";
+    playerScore++;
+    computerScore++;
   }
   
   else {
-    results = "You Loose!";
+    computerScore++;
   }
-  return results;
+  return `${playerScore}, ${computerScore}`;
 }
+
+function game() {
+  let result;
+
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+  if (playerScore == 5 && playerScore > computerScore) {
+    result = "You Win!";
+  }
+  else if(computerScore == 5 && playerScore < computerScore){
+    result = "You Loose!"
+  }
+  else {
+    result = "A Tie!"
+  }
+  return result;
+}
+
+game();
