@@ -1,4 +1,3 @@
-//Player score and Computer Score are initialised
 let playerScore = 0;
 let computerScore = 0;
 
@@ -21,32 +20,33 @@ function playRound(playerSelection, computerSelection) {
       (playerSelection == "scissors" && computerSelection == "paper") ||
       (playerSelection == "paper" && computerSelection == "rock")){
     
-    //Increase Player score as they have won the round
     playerScore++;
 
   } else if (playerSelection == computerSelection) {
 
-    //Both Player and Computer get a score as they selected the same option
     playerScore++;
     computerScore++;
 
   } else {
 
-    //Computer has won this round
     computerScore++;
   }
 
-  return `The Computer chose: ${computerSelection}! Your score is: ${playerScore}, the Computer score is: ${computerScore}`;
+  return `The Computer chose: ${computerSelection}! 
+          Your score is: ${playerScore}, the Computer score is: ${computerScore}`;
 }
 
 function game() {
   
   let turn = 0;
+
   //Five rounds
   for (let i = 0; i < 5; i++) {
-    //The Player is asked to choose a move between Rock, Paper and Scissors
-    let playerSelection = prompt("Hi! This is your round! Choose one: Rock, Paper or Scissors", "Your Choice").toLowerCase();
 
+    //The Player is asked to choose a move between Rock, Paper and Scissors
+    let playerSelection = prompt(
+      "Hi! This is your round! Choose one: Rock, Paper or Scissors", "Your Choice").toLowerCase();
+  
     //The computer chooses randomly
     let computerSelection = computerPlay().toLowerCase();
 
