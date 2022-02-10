@@ -41,6 +41,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   
+  let turn = 0;
   //Five rounds
   for (let i = 0; i < 5; i++) {
     //The Player is asked to choose a move between Rock, Paper and Scissors
@@ -49,7 +50,9 @@ function game() {
     //The computer chooses randomly
     let computerSelection = computerPlay().toLowerCase();
 
-    console.log(playRound(playerSelection, computerSelection));
+    turn++;
+
+    alert(`End of Round: ${turn}.` + playRound(playerSelection, computerSelection));
   }
 
   //How the score is calculated
