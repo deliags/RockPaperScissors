@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
     computerScore++;
   }
 
-  return `Your score is: ${playerScore}, the Computer score is: ${computerScore}`;
+  return `The Computer chose: ${computerSelection}! Your score is: ${playerScore}, the Computer score is: ${computerScore}`;
 }
 
 function game() {
@@ -52,16 +52,16 @@ function game() {
 
     turn++;
 
-    alert(`End of Round: ${turn}.` + playRound(playerSelection, computerSelection));
+    alert(`End of Round Number: ${turn}.` + playRound(playerSelection, computerSelection));
   }
 
   //How the score is calculated
   if (playerScore > computerScore) {
-    console.log(`You're the winner! Final Score: ${playerScore} to ${computerScore}`);
+    alert(`You're the winner! Final Score: ${playerScore} to ${computerScore}`);
   } else if (computerScore > playerScore) {
-    console.log(`You're the loser. Final Score: ${playerScore} to ${computerScore}`);
+    alert(`You're the loser. Final Score: ${playerScore} to ${computerScore}`);
   } else
-    console.log(`You tied. Final Score: ${playerScore} to ${computerScore}`);
+    alert(`You tied. Final Score: ${playerScore} to ${computerScore}`);
 }
 
 game();
