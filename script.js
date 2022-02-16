@@ -64,4 +64,11 @@ function game() {
     alert(`You tied. Final Score: ${playerScore} to ${computerScore}`);
 }
 
-game();
+// game();
+
+const buttons = document.querySelectorAll('button');
+
+//returns the element button upon clicking on it
+buttons.forEach(button => button.addEventListener('click', (e) => {
+  console.log(button)
+}))
