@@ -1,6 +1,6 @@
 const game = () => {
-  let playerScore = 0;
-  let computerScore = 0;
+  let pScore = 0;
+  let cScore = 0;
 
   //Starts the game by sending the user to the right screen
   const startGame = () => {
@@ -29,32 +29,45 @@ const game = () => {
         const computerNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[computerNumber];
 
+        compareHands(this.textContent, computerChoice);
         //Update Images
         playerHand.src = `./assets/${this.textContent}.png`;
         computerHand.src = `./assets/${computerChoice}.png`;
-      })
-    })
+      });
+    });
+
+    const updateScore = () => {
+      const playerScore = document.querySelector('.player-score p');
+      const computerScore = document.querySelector('.computer-score p');
+      playerScore.textContent = pScore;
+      computerScore.textContent = cScore;
+    }
+
+
     const compareHands = (playerChoice, computerChoice) => {
       const winner = document.querySelector('.winner');
 
-      if ((playerSelection == "rock" && computerSelection == "scissors") ||
-        (playerSelection == "scissors" && computerSelection == "paper") ||
-        (playerSelection == "paper" && computerSelection == "rock")) {
+      if ((playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "scissors" && computerChoice === "paper") ||
+        (playerChoice === "paper" && computerChoice === "rock")) {
 
-        playerScore++;
+        pScore++;
+        updateScore();
         winner.textContent = 'Player Wins';
         return;
 
-      } else if (playerSelection == computerSelection) {
+      } else if (playerChoice === computerChoice) {
 
-        playerScore++;
-        computerScore++;
+        pScore++;
+        cScore++;
+        updateScore();
         winner.textContent = 'It is a tie';
         return;
 
       } else {
 
-        computerScore++;
+        cScore++;
+        updateScore();
         winner.textContent = 'Computer Wins';
         return;
 
