@@ -4,44 +4,41 @@
   box-sizing: border-box;
 }
 
-section{
+section {
   height: 100vh;
-  background-color: rgb(39,41,68);
-  font-family:monospace;
+  background-color: rgb(39, 41, 68);
+  font-family: sans-serif;
 }
 
-.score{
-  color: rgb(223, 223, 223);
+.score {
+  color: rgb(224, 224, 224);
   height: 20vh;
-  display: flex;;
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
-
-.score h2{
+.score h2 {
   font-size: 30px;
 }
-
 .score p {
   text-align: center;
   padding: 10px;
   font-size: 25px;
 }
 
-.intro{
-  color: rgb(223, 223, 223);
+.intro {
+  color: rgb(224, 224, 224);
   height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.intro h1{
+.intro h1 {
   font-size: 50px;
 }
-
 .intro button,
 .match button {
   width: 150px;
@@ -55,30 +52,31 @@ section{
   cursor: pointer;
 }
 
-.match{
+.match {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease 0.5s;
 }
-
-.winner{
-  color: rgb(223, 223, 223);
+.winner {
+  color: rgb(224, 224, 224);
   text-align: center;
   font-size: 50px;
 }
-.hands, 
+
+.hands,
 .options {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.player-hand{
+.player-hand {
   transform: rotateY(180deg);
 }
 
-div.fadeOut{
+div.fadeOut {
   opacity: 0;
   pointer-events: none;
 }

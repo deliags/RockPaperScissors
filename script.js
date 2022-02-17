@@ -45,7 +45,7 @@ function game() {
 
   let computerSelection = computerPlay().toLowerCase();
 
-  for (let i = 0; i < 5; i++) {
+  
 
     turn++;
     buttons.forEach(button => button.addEventListener('click', () => {
@@ -60,7 +60,6 @@ function game() {
 
     }))
   }
-}
 
 function declareWinner() {
   //How the score is calculated
