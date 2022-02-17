@@ -1,6 +1,9 @@
 let playerScore = 0;
 let computerScore = 0;
-
+const buttons = document.querySelectorAll('button');
+const resultDiv = document.getElementById("result");
+const turnResultH2 = document.createElement("h2");
+const endResult = document.createElement("p");
 //The list of choices available for the computer to pick
 const computerChoice = ["Rock", "Paper", "Scissors"];
 
@@ -32,32 +35,34 @@ function playRound(playerSelection, computerSelection) {
     computerScore++;
   }
 
-  return `The Computer chose: ${computerSelection}! 
+  return `You chose: ${playerSelection}! The Computer chose: ${computerSelection}! 
           Your score is: ${playerScore}, the Computer score is: ${computerScore}`;
 }
 
 function game() {
 
   let turn = 0;
-  const buttons = document.querySelectorAll('button');
-  const resultDiv = document.getElementById("result");
-  const turnResultH2 = document.createElement("h2");
 
-  //Five rounds
+  let computerSelection = computerPlay().toLowerCase();
+
   for (let i = 0; i < 5; i++) {
-  
-    //returns the element button upon clicking on it
-    const choice = buttons.forEach(button => button.addEventListener('click', (e) => {
-      playRound(button.id, computerPlay().toLowerCase());}));
-    
+
     turn++;
+    buttons.forEach(button => button.addEventListener('click', () => {
 
-    turnResultH2.textContent = `End of Round Number: ${turn}.` + choice;
-    resultDiv.append(turnResultH2);
+      turnResultH2.textContent = `End of Round Number: ${turn}` + playRound(button.id, computerSelection);
+
+      if (playerScore === 5 || computerScore === 5) {
+        console.log(playerScore);
+        declareWinner();
+      };
+      resultDiv.append(turnResultH2);
+
+    }))
   }
+}
 
-  const endResult = document.createElement("p");
-  
+function declareWinner() {
   //How the score is calculated
   if (playerScore > computerScore) {
     endResult.textContent = `You're the winner! Final Score: ${playerScore} to ${computerScore}`;
@@ -65,8 +70,7 @@ function game() {
     endResult.textContent = `You're the loser. Final Score: ${playerScore} to ${computerScore}`;
   } else
     endResult.textContent = `You tied. Final Score: ${playerScore} to ${computerScore}`;
-  
+
   resultDiv.append(endResult);
 }
-
 game();
